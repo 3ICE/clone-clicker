@@ -3,7 +3,7 @@
 <head>
   <title>DAAK's Clone Clicker</title>
   <meta charset="utf-8"/>
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="jquery-3.1.1.js"></script>
   <script>
   /* global $, alert */
 
