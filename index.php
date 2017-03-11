@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test Game</title>
+  <title>DAAK's Clone Clicker</title>
   <meta charset="utf-8"/>
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
@@ -11,8 +11,10 @@
     "use strict";
 
     // These variable track the state of this "game"
-    var playerItems = [];
+    var helpers = [];
+    var upgrades = [];
     var points = 0;
+	var enemy_health = 100;
 
     // Simulates "game over" when a score would be sent
     $("#submit_score").click( function () {
@@ -30,7 +32,8 @@
       var msg = {
         "messageType": "SAVE",
         "gameState": {
-          "playerItems": playerItems,
+          "helpers": helpers,
+          "upgrades": upgrades,
           "score": parseFloat($("#score").text())
         }
       };
@@ -56,7 +59,8 @@
     // wants to send (displays them as an alert).
     window.addEventListener("message", function(evt) {
       if(evt.data.messageType === "LOAD") {
-        playerItems = evt.data.gameState.playerItems;
+        helpers = evt.data.gameState.helpers;
+        upgrades = evt.data.gameState.upgardes;
         points = evt.data.gameState.score;
         $("#score").text(points);
         updateItems();
@@ -71,14 +75,17 @@
     //
     // Adds an item to the players inventory
     $("#add_item").click( function () {
-      playerItems.push("A rock");
+      helpers.push("A rock");
       $("#new_item").val("");
       updateItems();
     });
 
     $("#add_points").click(function () {
-      points += 10;
+      var damage_done = 1 + upgrades.length + helpers.length;
+	  points += damage_done;
+	  enemy_health -= damage_done;
       $("#score").text(points);
+	  $("#health").width(enemy_health * 10);
     });
 
     // This is part of the mechanics of the "game"
@@ -89,8 +96,8 @@
     // when items are added or the game is loaded
     function updateItems() {
       $("#item_list").html("");
-      for (var i = playerItems.length - 1; i >= 0; i--) {
-        $("#item_list").append("<li>" + playerItems[i] + "</li>");
+      for (var i = helpers.length - 1; i >= 0; i--) {
+        $("#item_list").append("<li>" + helpers[i] + "</li>");
       }
     }
 
@@ -110,12 +117,14 @@
 </head>
 <body>
 
-  <button id="add_item">Add a stone to backbag</button>
-  <button id="add_points">Add 10 points</button>
+  <button id="add_item">Hire Helper!</button>
+  <button id="add_points">Attack</button>
+  <button id="add_upgrades">Add Upgrades</button>
 
-  <h3>Backbag</h3>
+  <h3>Equipment</h3>
   <ul id="item_list"></ul>
   <div><span  id="score">0</span> Points</div>
+  <div><span  id="health" style = "width:1000px; background-color:red; color:black; display:block">100 Hit-Points</span> </div>
 
   <button id="submit_score">Submit score</button><br>
 
