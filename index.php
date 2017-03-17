@@ -1,52 +1,58 @@
 <!DOCTYPE html>
+<!-- http://clone-clicker.herokuapp.com/ -->
 <html>
-<head>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>DAAK's Clone Clicker</title>
-	<meta charset="utf-8"/>
 	<script src="jquery-3.1.1.js"></script>
 	<script>
-	/* global $, alert */
-
+	//3ICE: "onload"
 	$(document).ready( function() {
 		"use strict";
 
-		// These variable track the state of this "game"
-		var helpers = [];
-		var upgrades = [];
+		//3ICE: These track the state of the game
+		var helpers = 0;
+		var equipment = [];
+		var equipmentPool = ["A rock", "A shield", "A bigger sword", "A gun", "A rocket", "A death laser", "Nuke", "Nuke v2", "Nuke v3"] //3ICE: then Nuke v4, Nuke v5, ad infinitum
+		var upgrades = 0;
 		var points = 0;
-	var gold = 100;
-	var enemy_health = 100;
-	var enemy_level = 1;
-	var max_health = 100;
-	var helper_cost = 100;
+		var gold = 100;
+		var enemy_health = 100;//3ICE: Current vs:
+		var max_health = 100; //3ICE: Maximum
+		var enemy_level = 1;
+		var helper_cost = 100;
+		var equipment_cost = 100;
+		var upgrade_cost = 100;
 
-		// Simulates "game over" when a score would be sent
 		$("#submit_score").click( function () {
 			var msg = {
 				"messageType": "SCORE",
-				"score": parseFloat($("#score").text())
+				"score": points
 			};
 			window.parent.postMessage(msg, "*");
 		});
 
-		// Sends this game's state to the service.
-		// The format of the game state is decided
-		// by the game
 		$("#save").click( function () {
 			var msg = {
 				"messageType": "SAVE",
 				"gameState": {
 					"helpers": helpers,
+					"equipment": equipment,
 					"upgrades": upgrades,
+					"points": points,
 					"gold": gold,
-					"score": parseFloat($("#score").text())
+					"enemy_health": enemy_health,
+					"max_health": max_health,
+					"enemy_level": enemy_level,
+					"helper_cost": helper_cost,
+					"equipment_cost": equipment_cost,
+					"upgrade_cost": upgrade_cost,
 				}
 			};
 			window.parent.postMessage(msg, "*");
 		});
 
-		// Sends a request to the service for a
-		// state to be sent, if there is one.
 		$("#load").click( function () {
 			var msg = {
 				"messageType": "LOAD_REQUEST",
@@ -54,83 +60,104 @@
 			window.parent.postMessage(msg, "*");
 		});
 
-		// Listen incoming messages, if the messageType
-		// is LOAD then the game state will be loaded.
-		// Note that no checking is done, whether the
-		// gameState in the incoming message contains
-		// correct information.
-		//
-		// Also handles any errors that the service
-		// wants to send (displays them as an alert).
 		window.addEventListener("message", function(evt) {
 			if(evt.data.messageType === "LOAD") {
 				helpers = evt.data.gameState.helpers;
+				equipment = evt.data.gameState.equipment;
 				upgrades = evt.data.gameState.upgardes;
+				points = evt.data.gameState.points;
 				gold = evt.data.gameState.gold;
-				points = evt.data.gameState.score;
-				$("#score").text(points);
-				updateItems();
+				enemy_health = evt.data.gameState.enemy_health;
+				max_health = evt.data.gameState.max_health;
+				enemy_level = evt.data.gameState.enemy_level;
+				helper_cost = evt.data.gameState.helper_cost;
+				equipment_cost = evt.data.gameState.equipment_cost;
+				upgrade_cost = evt.data.gameState.upgrade_cost;
+				update();
 			} else if (evt.data.messageType === "ERROR") {
 				alert(evt.data.info);
 			}
 		});
 
-		// This is part of the mechanics of the "game"
-		// it does not relate to the messaging with the
-		// service.
-		//
-		// Adds an item to the players inventory
-		$("#add_item").click( function () {
+		$("#hire_helper").click( function () {
 		if(helper_cost <= gold){
-			helpers.push("A rock");//Daniel will fix uniqueness
-			$("#new_item").val("");
-			updateItems();
+			helpers += 1;
 			gold -= helper_cost;
+			update();
 			helper_cost += 100;
-			$("#add_item").text("Hire Helper ("+helper_cost+" gold)")
-			$("#gold").text(gold);
+			$("#hire_helper").text("Hire Helper (" + helper_cost + " gold)")
 		}
 		else{
-			alert("You need "+(helper_cost - gold)+" more gold!");
+			alert("You need " + (helper_cost - gold) + " more gold!");
 		}
 	});
 
-		$("#add_points").click(function () {
-			var damage_done = 1 + upgrades.length + helpers.length;
-		points += damage_done;
-		enemy_health -= damage_done;
-		if(enemy_health <= 0){
-			max_health = 100 + enemy_level * 10;
-			gold += 10 + enemy_level * 10;
-			enemy_health = max_health;
-			enemy_level += 1;
-			$("#gold").text(gold);
-		}			
-			$("#score").text(points);
-		$("#health").width(enemy_health / max_health * 300);
-		$("#health").text(enemy_health +" Hit-Points");
+		$("#purchase_equipment").click( function () {
+		if(equipment_cost <= gold){
+			equipment.push(equipmentPool[equipment.length]);
+			gold -= equipment_cost;
+			update();
+			equipment_cost += 100;
+			if(equipment_cost<1000){
+				$("#purchase_equipment").text("Purchase equipment (" + equipment_cost + " gold)")
+			}else{
+				$("#purchase_equipment").hide()//3ICE: No more equipment in the shop.
+			}
+		}
+		else{
+			alert("You need " + (equipment_cost - gold) + " more gold!");
+		}
+	});
+
+		$("#upgrade").click( function () {
+		if(upgrade_cost <= gold){
+			upgrades += 1;
+			gold -= upgrade_cost;
+			update();
+			upgrade_cost += 100;
+			$("#upgrade").text("Purchase level " + (upgrades+1) + " Upgrade (" + upgrade_cost + " gold)")
+		}
+		else{
+			alert("You need " + (upgrade_cost - gold) + " more gold!");
+		}
+	});
+
+		$("#attack").click(function () {
+			var damage_done = 1 + upgrades + helpers + equipment.length;
+			points += damage_done;
+			enemy_health -= damage_done;
+			if(enemy_health <= 0){
+				max_health = 100 + enemy_level * 10;
+				gold += 10 + enemy_level * 10;
+				points += enemy_level * 100;
+				enemy_health = max_health;
+				enemy_level += 1;
+				update()
+			}else{
+				//3ICE: Just a light update():
+				$("#points").text(points);
+				$("#health").width(enemy_health / max_health * 300);
+				$("#health").text(enemy_health + " Hit Points");
+			}
 		});
 
-		// This is part of the mechanics of the "game"
-		// it does not relate to the messaging with the
-		// service.
-		//
-		// "Redraws" the inventory of the player. Used
-		// when items are added or the game is loaded
-		function updateItems() {
-			$("#item_list").html("");
-			for (var i = helpers.length - 1; i >= 0; i--) {
-				$("#item_list").append("<li>" + helpers[i] + "</li>");
+		function update() {
+			$("#gold").text(gold);
+			$("#points").text(points);
+			$("#helpers").text(helpers);
+			$("#health").width(enemy_health / max_health * 300);
+			$("#health").text(enemy_health + " Hit Points");
+			$("#equipment").html("");
+			for (var i = equipment.length - 1; i >= 0; i--) {
+				$("#equipment").append("<li>" + equipment[i] + "</li>");
 			}
 		}
 
-		// Request the service to set the resolution of the
-		// iframe correspondingly
 		var message =	{
 			messageType: "SETTING",
 			options: {
-				"width": 700, //Integer
-				"height": 300 //Integer
+				"width": 640,
+				"height": 480
 				}
 		};
 		window.parent.postMessage(message, "*");
@@ -140,19 +167,22 @@
 </head>
 <body>
 
-	<button id="add_item">Hire Helper (100 gold)</button>
-	<button id="add_points">Attack</button>
-	<button id="add_upgrades">Add Upgrades</button>
+	<button id="attack">Attack</button><br />
+	<button id="hire_helper">Hire Helper (100 gold)</button>
+	<button id="purchase_equipment">Purchase equipment (100 gold)</button>
+	<button id="upgrade">Purchase level 1 Upgrade (100 gold)</button>
 
 	<h3>Equipment</h3>
-	<ul id="item_list"></ul>
-	<div><span	id="score">0</span> Points</div>
-	<div><span	id="gold">100</span> Gold</div>
-	<div><span	id="health" style = "width:300px; background-color:red; color:black; display:block; white-space:nowrap">100 Hit-Points</span> </div>
+	<ul id="equipment"></ul>
 
-	<button id="submit_score">Submit score</button><br>
+	<div><span id="points">0</span> Points</div>
+	<div><span id="gold">100</span> Gold</div>
+	<div><span id="helpers">0</span> Helpers</div>
+	<div><span id="health" style="width: 300px;">100 Hit Points</span></div>
 
+	<button id="submit_score">Submit score</button><br />
 	<button id="save">Save</button>
 	<button id="load">Load</button>
-</body>
-</html>
+
+
+</body></html>
