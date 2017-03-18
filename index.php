@@ -122,7 +122,12 @@
 		}
 	});
 
+		var images = ["img/attack1.png", "img/attack2.png", "img/attack3.png", "img/attack4.png", "img/attack5.png", "img/attack6.png", "img/attack7.png", "img/attack8.png", "img/attack9.png"];
+		var imageObject = document.getElementById("imageObject");
+		var imageCounter = 1;
 		$("#attack").click(function () {
+			if(imageCounter > 8){imageCounter = 0;} // 3ICE: [9] resets to [0].
+			imageObject.src = images[imageCounter++];
 			var damage_done = 1 + upgrades + helpers + equipment.length;
 			points += damage_done;
 			enemy_health -= damage_done;
@@ -182,7 +187,7 @@
 
 	<button id="submit_score">Submit score</button><br />
 	<button id="save">Save</button>
-	<button id="load">Load</button>
-
+	<button id="load">Load</button><br />
+	<img src="img/attack1.png" id="imageObject" />
 
 </body></html>
