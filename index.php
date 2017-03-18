@@ -25,6 +25,8 @@
 		var equipment_cost = 100;
 		var upgrade_cost = 100;
 
+		$(".hid").css("display","none");
+
 		$("#submit_score").click( function () {
 			var msg = {
 				"messageType": "SCORE",
@@ -189,5 +191,13 @@
 	<button id="save">Save</button>
 	<button id="load">Load</button><br />
 	<img src="img/attack1.png" id="imageObject" />
+	<img src="img/attack2.png" class="hid" style="display: inline" />
+	<img src="img/attack3.png" class="hid" style="display: inline" />
+	<img src="img/attack4.png" class="hid" style="display: inline" />
+	<img src="img/attack5.png" class="hid" style="display: inline" />
+	<img src="img/attack6.png" class="hid" style="display: inline" />
+	<img src="img/attack7.png" class="hid" style="display: inline" />
+	<img src="img/attack8.png" class="hid" style="display: inline" />
+	<img src="img/attack9.png" class="hid" style="display: inline" />
 
 </body></html>
