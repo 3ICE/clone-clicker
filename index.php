@@ -174,22 +174,25 @@
 </head>
 <body>
 
-	<button id="attack">Attack</button><br />
-	<button id="hire_helper">Hire Helper (100 gold)</button>
-	<button id="purchase_equipment">Purchase equipment (100 gold)</button>
-	<button id="upgrade">Purchase level 1 Upgrade (100 gold)</button>
 
-	<h3>Equipment</h3>
-	<ul id="equipment"></ul>
+	<div style="width:800px; margin:0 auto;">
 
-	<div><span id="points">0</span> Points</div>
-	<div><span id="gold">100</span> Gold</div>
-	<div><span id="helpers">0</span> Helpers</div>
-	<div><span id="health" style="width: 300px;">100 Hit Points</span></div>
 
-	<button id="submit_score">Submit score</button><br />
-	<button id="save">Save</button>
-	<button id="load">Load</button><br />
+
+  <h1>
+   CLONE CLICKER
+	</h1>
+
+  <div id ="centertag">
+
+  	<br>
+
+		<div class="row">
+  	<div class='col' style="float:right"><span id="gold">100</span> Gold</div><br>
+  	<div class='col' style="float:right"><span id="helpers">0</span> Helpers</div><br>
+    <div class='col' style="float:right"><span id="points">0</span> Points</div><br>
+	</div>
+
 	<img src="img/attack1.png" id="imageObject" />
 	<img src="img/attack2.png" class="hid" style="display: inline" />
 	<img src="img/attack3.png" class="hid" style="display: inline" />
@@ -199,5 +202,25 @@
 	<img src="img/attack7.png" class="hid" style="display: inline" />
 	<img src="img/attack8.png" class="hid" style="display: inline" />
 	<img src="img/attack9.png" class="hid" style="display: inline" />
+	<div><span id="health" style="width: 300px;">100 Hit Points</span></div><br>
 
+	<button id="attack">Attack</button><br><br>
+
+  </div>
+
+	<button id="hire_helper">Hire Helper (100 gold)</button>
+	<button id="purchase_equipment">Purchase equipment (100 gold)</button>
+	<button id="upgrade">Purchase level 1 Upgrade (100 gold)</button>
+
+  <h3>Equipment</h3>
+	<ul id="equipment"></ul>
+
+
+
+	<button id="submit_score">Submit score</button>
+	<button id="save">Save</button>
+	<button id="load">Load</button><br />
+
+
+</div>
 </body></html>
