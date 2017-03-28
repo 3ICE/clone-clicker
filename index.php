@@ -3,6 +3,7 @@
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>DAAK's Clone Clicker</title>
 	<script src="jquery-3.1.1.js"></script>
@@ -173,54 +174,37 @@
 	</script>
 </head>
 <body>
-
-
 	<div style="width:800px; margin:0 auto;">
+		<h1>CLONE CLICKER</h1>
+		<div id ="centertag">
+			<br />
+			<div class="row">
 
-
-
-  <h1>
-   CLONE CLICKER
-	</h1>
-
-  <div id ="centertag">
-
-  	<br>
-
-		<div class="row">
-  	<div class='col' style="float:right"><span id="gold">100</span> Gold</div><br>
-  	<div class='col' style="float:right"><span id="helpers">0</span> Helpers</div><br>
-    <div class='col' style="float:right"><span id="points">0</span> Points</div><br>
+				<div class="col"><img src="img/Coin.jpg" alt="gold"/> <span id="gold">100</span> Gold</div>
+				<div class="col"><img src="img/stickman.jpg" alt ="helpers"/> <span id="helpers">0</span> Helpers</div>
+				<div class="col"><img src="img/Star.jpg" alt="points"/> <span id="points">0</span> Points</div>
+			</div>
+			<img src="img/attack1.png" id="imageObject" alt="player" />
+			<img src="img/attack2.png" class="hid" alt="preload2" style="display: inline" />
+			<img src="img/attack3.png" class="hid" alt="preload3" style="display: inline" />
+			<img src="img/attack4.png" class="hid" alt="preload4" style="display: inline" />
+			<img src="img/attack5.png" class="hid" alt="preload5" style="display: inline" />
+			<img src="img/attack6.png" class="hid" alt="preload6" style="display: inline" />
+			<img src="img/attack7.png" class="hid" alt="preload7" style="display: inline" />
+			<img src="img/attack8.png" class="hid" alt="preload8" style="display: inline" />
+			<img src="img/attack9.png" class="hid" alt="preload9" style="display: inline" />
+			<div><span id="health" style="width: 300px;">100 Hit Points</span></div><br />
+			<button id="attack">Attack</button><br /><br />
+		</div>
+		<button id="hire_helper">Hire Helper (100 gold)</button>
+		<button id="purchase_equipment">Purchase equipment (100 gold)</button>
+		<button id="upgrade">Purchase level 1 Upgrade (100 gold)</button>
+		<h3>Equipment</h3>
+		<ul id="equipment"></ul>
+		<button id="submit_score">Submit score</button>
+		<button id="save">Save</button>
+		<button id="load">Load</button><br />
+		<div id="footer">Developed by: Daniel Berezvai, Aparajita Chowdhury, Arjun Venkatakrishnan, and Krishna Bagale</div>
 	</div>
-
-	<img src="img/attack1.png" id="imageObject" />
-	<img src="img/attack2.png" class="hid" style="display: inline" />
-	<img src="img/attack3.png" class="hid" style="display: inline" />
-	<img src="img/attack4.png" class="hid" style="display: inline" />
-	<img src="img/attack5.png" class="hid" style="display: inline" />
-	<img src="img/attack6.png" class="hid" style="display: inline" />
-	<img src="img/attack7.png" class="hid" style="display: inline" />
-	<img src="img/attack8.png" class="hid" style="display: inline" />
-	<img src="img/attack9.png" class="hid" style="display: inline" />
-	<div><span id="health" style="width: 300px;">100 Hit Points</span></div><br>
-
-	<button id="attack">Attack</button><br><br>
-
-  </div>
-
-	<button id="hire_helper">Hire Helper (100 gold)</button>
-	<button id="purchase_equipment">Purchase equipment (100 gold)</button>
-	<button id="upgrade">Purchase level 1 Upgrade (100 gold)</button>
-
-  <h3>Equipment</h3>
-	<ul id="equipment"></ul>
-
-
-
-	<button id="submit_score">Submit score</button>
-	<button id="save">Save</button>
-	<button id="load">Load</button><br />
-
-
-</div>
-</body></html>
+</body>
+</html>
