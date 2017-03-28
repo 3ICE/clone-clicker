@@ -1,6 +1,45 @@
 #health{
-	background-color: darkred;
-	color: white;
-	display: block;
-	white-space: nowrap;
+    background-color: darkred;
+    color: white;
+    display: block;
+    white-space: nowrap;
+}
+.row{
+    display: flex;
+
+}
+.col{
+    flex: 1;
+    padding: 1em;
+
+}
+@media only screen and (max-width: 500px) {
+    .col{
+    flex: 0.1;
+    padding: 1em;
+
+    }
+}
+#footer{
+    padding-top: 2em;
+    border-top: 1px #222;
+}
+    body {
+        background-color: #fff;
+
+    }
+    button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+img{
+ vertical-align:middle;
 }

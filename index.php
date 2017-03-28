@@ -174,7 +174,7 @@
 	</script>
 </head>
 <body>
-	<div style="width:800px; margin:0 auto;">
+	<div style="margin:0 auto;">
 		<h1>CLONE CLICKER</h1>
 		<div id ="centertag">
 			<br />
