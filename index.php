@@ -3,7 +3,7 @@
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>DAAK's Clone Clicker</title>
 	<script src="jquery-3.1.1.js"></script>
@@ -179,7 +179,6 @@
 		<div id ="centertag">
 			<br />
 			<div class="row">
-
 				<div class="col"><img src="img/Coin.jpg" alt="gold"/> <span id="gold">100</span> Gold</div>
 				<div class="col"><img src="img/stickman.jpg" alt ="helpers"/> <span id="helpers">0</span> Helpers</div>
 				<div class="col"><img src="img/Star.jpg" alt="points"/> <span id="points">0</span> Points</div>
@@ -204,7 +203,7 @@
 		<button id="submit_score">Submit score</button>
 		<button id="save">Save</button>
 		<button id="load">Load</button><br />
-		<div id="footer">Developed by: Daniel Berezvai, Aparajita Chowdhury, Arjun Venkatakrishnan, and Krishna Bagale</div>
+		<div id="footer">Developed by: <a href="http://3ice.hu/">Daniel Berezvai</a>, Aparajita Chowdhury, Arjun Venkatakrishnan, and <a href="http://krishnabagale.com">Krishna Bagale</a></div>
 	</div>
 </body>
 </html>
