@@ -1,0 +1,36 @@
+<!-- Click Attack button and change image then reset to original-working Authored by Krishna Bagale -->
+<!DOCTYPE html>
+ <html>
+ <title>JavaScript Game</title>
+ <head>
+ 	<script>
+
+function clickMeHandler(){
+document.getElementById("imageObject").src="http://krishnabagale.com/wp-content/uploads/2017/03/img22.png";
+setTimeout(function(){
+	 document.getElementById("imageObject").src="http://krishnabagale.com/wp-content/uploads/2017/03/img11.png";
+ }, 1000);
+}
+
+
+   </script>
+ </head>
+ <body>
+   <input type="button" id="clickme" value="Attack" onClick="clickMeHandler();">
+    <a onclick="changeImage(this)" id="mute"> 
+     <img src="http://krishnabagale.com/wp-content/uploads/2017/03/img11.png" id="imageObject" />
+ </a> 
+<style>
+ #mute #pause {
+  display: none;
+ }
+ #mute.playing #pause {
+  display: block;
+ }
+ #mute.playing #play {
+  display: none;
+ }
+ </style>
+
+ </body>
+ </html>

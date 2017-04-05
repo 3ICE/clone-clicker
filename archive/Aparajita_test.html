@@ -1,0 +1,36 @@
+<!-- swrodman Authored by Aparajita Chowdhury -->
+<!DOCTYPE html>
+ <html>
+ <head>
+ </head>
+ <body>
+   <!--<img id="target" src=""img11.png"," width="107" height="98" />-->
+   <a onclick="mute(); changeImage(this)" id="mute">
+     <img src="http://krishnabagale.com/wp-content/uploads/2017/03/img11.png" id="play" />
+     <img src="http://krishnabagale.com/wp-content/uploads/2017/03/img22.png" id="pause" />
+ </a>
+
+<style>
+ #mute #pause {
+  display: none;
+ }
+ #mute.playing #pause {
+  display: block;
+ }
+ #mute.playing #play {
+  display: none;
+ }
+ </style>
+<script>
+function mute() {}
+
+function changeImage(obj) {
+ obj.classList.toggle('playing');
+ setTimeout(function(){
+ obj.classList = []
+ }, 1000)
+}
+
+   </script>
+ </body>
+ </html>

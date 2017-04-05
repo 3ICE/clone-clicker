@@ -1,14 +1,16 @@
+<!-- done with hitting sword Authored by Aparajita Chowdhury -->
 <!DOCTYPE html>
 <!-- http://clone-clicker.herokuapp.com/ -->
 <html>
 	<head>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>DAAK's Clone Clicker</title>
 	<script src="jquery-3.1.1.js"></script>
 	<script>
 	//3ICE: "onload"
+
 	$(document).ready( function() {
 		"use strict";
 
@@ -25,9 +27,6 @@
 		var helper_cost = 100;
 		var equipment_cost = 100;
 		var upgrade_cost = 100;
-
-		$(".hid").css("display","none");
-
 		$("#submit_score").click( function () {
 			var msg = {
 				"messageType": "SCORE",
@@ -125,13 +124,14 @@
 		}
 	});
 
-		var images = ["img/attack1.png", "img/attack2.png", "img/attack3.png", "img/attack4.png", "img/attack5.png", "img/attack6.png", "img/attack7.png", "img/attack8.png", "img/attack9.png"];
-		var imageObject = document.getElementById("imageObject");
-		var imageCounter = 1;
 		$("#attack").click(function () {
-			if(imageCounter > 8){imageCounter = 0;} // 3ICE: [9] resets to [0].
-			imageObject.src = images[imageCounter++];
+			document.getElementById("imageObject").src="http://krishnabagale.com/wp-content/uploads/2017/03/img22.png";
+			setTimeout(function(){
+				 document.getElementById("imageObject").src="http://krishnabagale.com/wp-content/uploads/2017/03/img11.png";
+			 }, 1000);
 			var damage_done = 1 + upgrades + helpers + equipment.length;
+			//document.getElementById(‘imageDiv’) = sword.gif
+
 			points += damage_done;
 			enemy_health -= damage_done;
 			if(enemy_health <= 0){
@@ -174,36 +174,24 @@
 	</script>
 </head>
 <body>
-	<div style="margin:0 auto;">
-		<h1>CLONE CLICKER</h1>
-		<div id ="centertag">
-			<br />
-			<div class="row">
-				<div class="col"><img src="img/Coin.jpg" alt="gold"/> <span id="gold">100</span> Gold</div>
-				<div class="col"><img src="img/stickman.jpg" alt ="helpers"/> <span id="helpers">0</span> Helpers</div>
-				<div class="col"><img src="img/Star.jpg" alt="points"/> <span id="points">0</span> Points</div>
-			</div>
-			<img src="img/attack1.png" id="imageObject" alt="player" />
-			<img src="img/attack2.png" class="hid" alt="preload2" style="display: inline" />
-			<img src="img/attack3.png" class="hid" alt="preload3" style="display: inline" />
-			<img src="img/attack4.png" class="hid" alt="preload4" style="display: inline" />
-			<img src="img/attack5.png" class="hid" alt="preload5" style="display: inline" />
-			<img src="img/attack6.png" class="hid" alt="preload6" style="display: inline" />
-			<img src="img/attack7.png" class="hid" alt="preload7" style="display: inline" />
-			<img src="img/attack8.png" class="hid" alt="preload8" style="display: inline" />
-			<img src="img/attack9.png" class="hid" alt="preload9" style="display: inline" />
-			<div><span id="health" style="width: 300px;">100 Hit Points</span></div><br />
-			<button id="attack">Attack</button><br /><br />
-		</div>
-		<button id="hire_helper">Hire Helper (100 gold)</button>
-		<button id="purchase_equipment">Purchase equipment (100 gold)</button>
-		<button id="upgrade">Purchase level 1 Upgrade (100 gold)</button>
-		<h3>Equipment</h3>
-		<ul id="equipment"></ul>
-		<button id="submit_score">Submit score</button>
-		<button id="save">Save</button>
-		<button id="load">Load</button><br />
-		<div id="footer">Developed by: <a href="http://3ice.hu/">Daniel Berezvai</a>, Aparajita Chowdhury, Arjun Venkatakrishnan, and <a href="http://krishnabagale.com">Krishna Bagale</a></div>
-	</div>
-</body>
-</html>
+	<button id="attack">Attack</button><br />
+	<button id="hire_helper">Hire Helper (100 gold)</button>
+	<button id="purchase_equipment">Purchase equipment (100 gold)</button>
+	<button id="upgrade">Purchase level 1 Upgrade (100 gold)</button>
+	<a onclick="changeImage(this)" id="mute">
+	 <img src="http://krishnabagale.com/wp-content/uploads/2017/03/img11.png" id="imageObject" />
+  </a>
+	<h3>Equipment</h3>
+	<ul id="equipment"></ul>
+
+	<div><span id="points">0</span> Points</div>
+	<div><span id="gold">100</span> Gold</div>
+	<div><span id="helpers">0</span> Helpers</div>
+	<div><span id="health" style="width: 300px;">100 Hit Points</span></div>
+
+	<button id="submit_score">Submit score</button><br />
+	<button id="save">Save</button>
+	<button id="load">Load</button>
+
+
+</body></html>

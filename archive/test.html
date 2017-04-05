@@ -1,0 +1,31 @@
+<!-- Image change onclick Authored by Krishna Bagale -->
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <!--<img id="target" src=""img11.png"," width="107" height="98" />-->
+  <img id="target" src="http://krishnabagale.com/wp-content/uploads/2017/03/img11.png" width="107" height="98" />
+  <input type="button" onclick="nextPic()" value="change image" />
+  
+  
+  
+    <script>
+    var target = document.getElementById('target');
+    var counter = 0;
+    var myPictures = [
+        "http://krishnabagale.com/wp-content/uploads/2017/03/img11.png",
+        "http://krishnabagale.com/wp-content/uploads/2017/03/img22.png"
+        /*"img2.png"*/
+    ];
+
+    function nextPic() {
+      counter += 1;
+      if (counter > myPictures.length -1) {
+        counter = 0;
+      }
+      target.src = myPictures[counter];
+    }
+  </script>
+</body>
+</html>
