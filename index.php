@@ -1,9 +1,7 @@
 <?php
-if($_SERVER['HTTPS'] != "on"){
-    $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    header('HTTP/1.1 301 Moved Permanently');
-    header('Location: ' . $redirect);
-    exit();
+if($_SERVER['HTTPS']!="on"){
+    $redirect= "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    header("Location:$redirect"); 
 }
 ?>
 <!DOCTYPE html>
