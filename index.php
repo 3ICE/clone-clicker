@@ -168,8 +168,8 @@
 		var message =	{
 			messageType: "SETTING",
 			options: {
-				"width": 640,
-				"height": 480
+				"width": 900,
+				"height": 800
 				}
 		};
 		window.parent.postMessage(message, "*");
