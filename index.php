@@ -72,9 +72,9 @@
 				helpers = evt.data.gameState.helpers;
 				equipment = evt.data.gameState.equipment;
 				upgrades = evt.data.gameState.upgardes;
-				points = evt.data.gameState.points;
+				points = parseInt(evt.data.gameState.points);
 				gold = evt.data.gameState.gold;
-				enemy_health = evt.data.gameState.enemy_health;
+				enemy_health = parseInt(evt.data.gameState.enemy_health);
 				max_health = evt.data.gameState.max_health;
 				enemy_level = evt.data.gameState.enemy_level;
 				helper_cost = evt.data.gameState.helper_cost;
