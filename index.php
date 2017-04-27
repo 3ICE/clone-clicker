@@ -77,6 +77,7 @@
 				points = parseInt(evt.data.gameState.points);
 				gold = evt.data.gameState.gold;
 				enemy_health = parseInt(evt.data.gameState.enemy_health);
+				console.dir(enemy_health);
 				max_health = evt.data.gameState.max_health;
 				enemy_level = evt.data.gameState.enemy_level;
 				helper_cost = evt.data.gameState.helper_cost;
