@@ -57,7 +57,7 @@
 					"upgrade_cost": upgrade_cost,
 				}
 			};
-			console.dir(msg.gameState);
+			//console.dir(msg.gameState);
 			window.parent.postMessage(msg, "*");
 		});
 
@@ -70,22 +70,18 @@
 
 		window.addEventListener("message", function(evt) {
 			if(evt.data.messageType === "LOAD") {
-				console.dir(evt.data.gameState);
-				helpers = evt.data.gameState.helpers;
+				//console.dir(evt.data.gameState);
+				helpers = parseInt(evt.data.gameState.helpers);
 				equipment = evt.data.gameState.equipment;
-				upgrades = evt.data.gameState.upgardes;
+				upgrades = parseInt(evt.data.gameState.upgardes);
 				points = parseInt(evt.data.gameState.points);
-				gold = evt.data.gameState.gold;
+				gold = parseInt(evt.data.gameState.gold);
 				enemy_health = parseInt(evt.data.gameState.enemy_health);
-				console.dir(enemy_health);
-				max_health = evt.data.gameState.max_health;
-				enemy_level = evt.data.gameState.enemy_level;
-				helper_cost = evt.data.gameState.helper_cost;
-				equipment_cost = evt.data.gameState.equipment_cost;
-				upgrade_cost = evt.data.gameState.upgrade_cost;
-				console.dir(upgrades);
-			  console.dir(helpers);
-			  console.dir(equipment);
+				max_health = parseInt(evt.data.gameState.max_health);
+				enemy_level = parseInt(evt.data.gameState.enemy_level);
+				helper_cost = parseInt(evt.data.gameState.helper_cost);
+				equipment_cost = parseInt(evt.data.gameState.equipment_cost);
+				upgrade_cost = parseInt(evt.data.gameState.upgrade_cost);
 				update();
 			} else if (evt.data.messageType === "ERROR") {
 				alert(evt.data.info);
@@ -143,12 +139,7 @@
 			imageObject.src = images[imageCounter++];
 			var damage_done = 1 + upgrades + helpers + equipment.length;
 			points += damage_done;
-			console.dir(upgrades);
-			console.dir(helpers);
-			console.dir(equipment);
-			console.dir(enemy_health);
 			enemy_health -= damage_done;
-			console.dir(enemy_health);
 			if(enemy_health <= 0){
 				max_health = 100 + enemy_level * 10;
 				gold += 10 + enemy_level * 10;
