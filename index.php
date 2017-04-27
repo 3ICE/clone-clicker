@@ -83,6 +83,9 @@
 				helper_cost = evt.data.gameState.helper_cost;
 				equipment_cost = evt.data.gameState.equipment_cost;
 				upgrade_cost = evt.data.gameState.upgrade_cost;
+				console.dir(upgrades);
+			  console.dir(helpers);
+			  console.dir(equipment);
 				update();
 			} else if (evt.data.messageType === "ERROR") {
 				alert(evt.data.info);
@@ -140,6 +143,9 @@
 			imageObject.src = images[imageCounter++];
 			var damage_done = 1 + upgrades + helpers + equipment.length;
 			points += damage_done;
+			console.dir(upgrades);
+			console.dir(helpers);
+			console.dir(equipment);
 			console.dir(enemy_health);
 			enemy_health -= damage_done;
 			console.dir(enemy_health);
