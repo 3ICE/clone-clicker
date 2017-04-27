@@ -140,7 +140,9 @@
 			imageObject.src = images[imageCounter++];
 			var damage_done = 1 + upgrades + helpers + equipment.length;
 			points += damage_done;
+			console.dir(enemy_health);
 			enemy_health -= damage_done;
+			console.dir(enemy_health);
 			if(enemy_health <= 0){
 				max_health = 100 + enemy_level * 10;
 				gold += 10 + enemy_level * 10;
