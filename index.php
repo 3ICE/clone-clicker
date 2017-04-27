@@ -57,6 +57,7 @@
 					"upgrade_cost": upgrade_cost,
 				}
 			};
+			console.dir(msg.gameState);
 			window.parent.postMessage(msg, "*");
 		});
 
@@ -69,6 +70,7 @@
 
 		window.addEventListener("message", function(evt) {
 			if(evt.data.messageType === "LOAD") {
+				console.dir(evt.data.gameState);
 				helpers = evt.data.gameState.helpers;
 				equipment = evt.data.gameState.equipment;
 				upgrades = evt.data.gameState.upgardes;
