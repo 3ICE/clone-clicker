@@ -73,7 +73,7 @@
 				//console.dir(evt.data.gameState);
 				helpers = parseInt(evt.data.gameState.helpers);
 				equipment = evt.data.gameState.equipment;
-				upgrades = parseInt(evt.data.gameState.upgardes);
+				upgrades = parseInt(evt.data.gameState.upgrades);
 				points = parseInt(evt.data.gameState.points);
 				gold = parseInt(evt.data.gameState.gold);
 				enemy_health = parseInt(evt.data.gameState.enemy_health);
